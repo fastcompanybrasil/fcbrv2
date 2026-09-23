@@ -1,0 +1,6 @@
+{
+  "name": "Fast Company Brasil",
+  "description": "Clone fiel e responsivo do website Fast Company Brasil com tipografia Poppins, layout desktop e mobile idênticos às referências.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
