@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 // Official Fast Company Brasil Vector Logo
-const FastCompanyLogo = ({ className = "h-[30px] sm:h-[34px] lg:h-[38px] w-auto" }: { className?: string }) => (
+const FastCompanyLogo = ({ className = "h-[38px] sm:h-[48px] lg:h-[58px] xl:h-[62px] w-auto" }: { className?: string }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 424.24 137.37" 
@@ -87,21 +87,21 @@ export const Header: React.FC<HeaderProps> = ({
       {/* ========================================================================= */}
       {/* 1. TOP HEADER CONTAINER - EXACT TO IMAGE REFERENCE                        */}
       {/* ========================================================================= */}
-      <div className="w-full bg-[#1e1e1e] text-white border-b border-[#292929]">
+      <div className="w-full bg-[#181818] text-white border-b border-[#292929]">
         
         {/* Top Row: [☰ 🔍] ------------- [LOGO] ------------- [NEWSLETTER] */}
-        <div className="w-full px-4 sm:px-6 lg:px-[30px] h-[46px] sm:h-[48px] lg:h-[50px] flex items-center justify-between relative">
+        <div className="w-full px-4 sm:px-6 lg:px-[30px] h-[58px] sm:h-[68px] lg:h-[76px] flex items-center justify-between relative">
           
           {/* Left: Burger Menu Icon and Search Icon */}
-          <div className="flex items-center space-x-3.5 sm:space-x-4 shrink-0 z-10">
+          <div className="flex items-center space-x-4 sm:space-x-5 shrink-0 z-10">
             <button 
               onClick={() => setMobileMenuOpen(true)}
-              className="text-white hover:text-neutral-300 transition-colors cursor-pointer p-1 focus:outline-none flex flex-col justify-center items-center w-6 h-6 space-y-[3.5px]"
+              className="text-white hover:text-neutral-300 transition-colors cursor-pointer p-1 focus:outline-none flex flex-col justify-center items-center w-6 h-6 space-y-[4px]"
               aria-label="Abrir menu de navegação"
             >
-              <span className="block w-[19px] h-[1.5px] bg-white"></span>
-              <span className="block w-[19px] h-[1.5px] bg-white"></span>
-              <span className="block w-[19px] h-[1.5px] bg-white"></span>
+              <span className="block w-[20px] h-[1.5px] bg-white"></span>
+              <span className="block w-[20px] h-[1.5px] bg-white"></span>
+              <span className="block w-[20px] h-[1.5px] bg-white"></span>
             </button>
 
             <button 
@@ -109,40 +109,40 @@ export const Header: React.FC<HeaderProps> = ({
               className="text-white hover:text-neutral-300 transition-colors cursor-pointer p-1 focus:outline-none flex items-center justify-center"
               aria-label="Buscar"
             >
-              <Search size={18} strokeWidth={1.5} className="text-white" />
+              <Search size={19} strokeWidth={1.5} className="text-white" />
             </button>
           </div>
 
-          {/* Center: Official Logo (Fast Company Brasil) */}
+          {/* Center: Official Logo (Fast Company Brasil) - Grand Editorial Proportion */}
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-auto">
             <a 
               href="#" 
               className="flex items-center justify-center hover:opacity-90 transition-opacity"
               title="Fast Company Brasil"
             >
-              <FastCompanyLogo className="h-[28px] sm:h-[32px] lg:h-[36px] w-auto max-w-[210px] sm:max-w-[280px]" />
+              <FastCompanyLogo className="h-[36px] sm:h-[46px] lg:h-[56px] xl:h-[60px] w-auto" />
             </a>
           </div>
 
-          {/* Right: Institutional links (Mobile: only clean NEWSLETTER, no underline) */}
-          <div className="flex items-center space-x-4 sm:space-x-6 text-[12px] sm:text-[12.5px] font-medium tracking-wider uppercase z-10 text-white font-poppins">
+          {/* Right: Institutional links */}
+          <div className="flex items-center space-x-4 sm:space-x-6 lg:space-x-7 text-[12px] sm:text-[12.5px] font-semibold tracking-wider uppercase z-10 text-white font-poppins">
             <button 
               onClick={() => setSocialModalOpen(!socialModalOpen)}
-              className="hidden md:inline-block hover:text-neutral-300 transition-colors cursor-pointer font-normal"
+              className="hidden md:inline-block hover:text-neutral-300 transition-colors cursor-pointer"
             >
               REDES SOCIAIS
             </button>
 
             <button 
               onClick={onOpenNewsletter}
-              className="hover:text-neutral-300 transition-colors cursor-pointer text-white font-semibold text-[11.5px] sm:text-[12px] tracking-wider"
+              className="hover:text-neutral-300 transition-colors cursor-pointer text-white font-bold tracking-wider"
             >
               NEWSLETTER
             </button>
 
             <button 
               onClick={() => alert("Entre em contato com nossa equipe comercial: publicidade@fastcompanybrasil.com")}
-              className="hidden sm:inline-block hover:text-neutral-300 transition-colors cursor-pointer font-normal"
+              className="hidden sm:inline-block hover:text-neutral-300 transition-colors cursor-pointer"
             >
               ANUNCIE AQUI
             </button>
@@ -150,9 +150,9 @@ export const Header: React.FC<HeaderProps> = ({
 
         </div>
 
-        {/* Bottom Row: Centered Editorial Categories Navigation (Desktop only) */}
-        <div className="w-full bg-[#1e1e1e] border-t border-[#292929] hidden md:block">
-          <div className="w-full px-[30px] h-[28px] lg:h-[30px] pb-0.5 flex items-center justify-center">
+        {/* Bottom Row: Centered Editorial Categories Navigation (No divider line between logo and menu items) */}
+        <div className="w-full hidden md:block pb-3 pt-0">
+          <div className="w-full px-[30px] flex items-center justify-center">
             <nav className="flex items-center space-x-6 lg:space-x-8 text-[12px] font-bold tracking-wider uppercase text-white">
               
               <button 
@@ -174,7 +174,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="hover:text-neutral-300 transition-colors cursor-pointer flex items-center"
               >
                 <span>MONEY</span>
-                <span className="text-[8px] ml-1.5 leading-none">▸</span>
+                <span className="text-[9px] ml-1.5 leading-none">▾</span>
               </button>
 
               <button 
@@ -210,7 +210,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="hover:text-neutral-300 transition-colors cursor-pointer flex items-center"
               >
                 <span>EVENTOS</span>
-                <span className="text-[8px] ml-1.5 leading-none">▸</span>
+                <span className="text-[9px] ml-1.5 leading-none">▾</span>
               </button>
 
               {/* Separator Pipe */}
@@ -219,13 +219,13 @@ export const Header: React.FC<HeaderProps> = ({
               {/* FastCo Works with round 'W' Monogram badge */}
               <button 
                 onClick={() => handleCategoryNav('FASTCO WORKS')}
-                className="hover:text-neutral-300 transition-colors cursor-pointer flex items-center space-x-1.5"
+                className="hover:text-neutral-300 transition-colors cursor-pointer flex items-center space-x-1.5 font-bold tracking-wider"
               >
-                <span className="w-4 h-4 rounded-full bg-white text-[#242424] flex items-center justify-center text-[9px] font-black leading-none shrink-0 shadow-xs">
+                <span className="w-4 h-4 rounded-full bg-white text-black flex items-center justify-center text-[9px] font-black leading-none shrink-0 shadow-xs">
                   W
                 </span>
-                <span className="font-extrabold tracking-wider">FASTCO WORKS</span>
-                <span className="text-[8px] ml-1 leading-none">▸</span>
+                <span>FASTCO WORKS</span>
+                <span className="text-[9px] ml-1 leading-none">▾</span>
               </button>
 
             </nav>
