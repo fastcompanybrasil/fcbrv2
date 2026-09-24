@@ -346,11 +346,11 @@ export const StoriesForYou: React.FC<StoriesForYouProps> = ({ onSelectStory }) =
     <section className="w-full bg-white py-10 lg:py-14 border-b border-neutral-200 font-poppins">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header: Concentric Target Icon + Title */}
+        {/* Section Header: Concentric Target Icon + Title - Standardized */}
         <div className="flex items-center space-x-2.5 mb-5">
-          <div className="text-neutral-950 shrink-0">
+          <div className="w-6 h-6 flex items-center justify-center shrink-0 text-neutral-950">
             <svg 
-              className="w-5 h-5 sm:w-6 sm:h-6" 
+              className="w-5 h-5 text-black" 
               viewBox="0 0 24 24" 
               fill="none" 
               stroke="currentColor" 
@@ -362,7 +362,7 @@ export const StoriesForYou: React.FC<StoriesForYouProps> = ({ onSelectStory }) =
               <circle cx="12" cy="12" r="4" fill="currentColor" />
             </svg>
           </div>
-          <h2 className="text-xl sm:text-2xl lg:text-[28px] font-bold tracking-tight text-neutral-950 font-poppins">
+          <h2 className="text-[23px] sm:text-[25px] font-bold tracking-tight text-neutral-950 font-poppins leading-tight">
             Editorias em Destaque
           </h2>
         </div>
@@ -416,7 +416,7 @@ export const StoriesForYou: React.FC<StoriesForYouProps> = ({ onSelectStory }) =
                 </div>
 
                 {/* Title in bold Poppins */}
-                <h3 className="text-[14px] sm:text-[15px] font-bold leading-[1.3] text-neutral-950 group-hover:text-neutral-700 transition-colors font-poppins">
+                <h3 className="text-[14px] sm:text-[15px] font-bold leading-[1.3] text-neutral-950 group-hover:text-[#eb5724] transition-colors font-poppins">
                   {story.title}
                 </h3>
               </article>

@@ -1,121 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import { Mic, Play, Pause, Volume2, MoreVertical, ExternalLink } from 'lucide-react';
+import React from 'react';
+import { Mic, ExternalLink } from 'lucide-react';
 
 export const LatestPodcast: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const totalSeconds = 121; // 2:01
-
-  useEffect(() => {
-    let interval: any;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= totalSeconds) {
-            setIsPlaying(false);
-            return 0;
-          }
-          return prev + 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [isPlaying]);
-
-  const formatTime = (secs: number) => {
-    const mins = Math.floor(secs / 60);
-    const remaining = secs % 60;
-    return `${mins}:${remaining < 10 ? '0' : ''}${remaining}`;
-  };
-
-  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProgress(Number(e.target.value));
-  };
+  const spotifyShowUrl = "https://open.spotify.com/show/1ZP4SWljsAkgyZtGuEGUCh?si=d77e751adccc47a2";
+  const spotifyEpisodeUrl = "https://open.spotify.com/episode/2aK43MqFpMTUaP4pk8etrC?si=YevDmynhRuWeaxrQ_sYToA";
 
   return (
     <div className="w-full space-y-6">
-      {/* Latest Podcast Container */}
-      <div className="w-full bg-white">
+      {/* Latest Podcast / Webcast Section */}
+      <section className="w-full font-poppins" aria-label="Podcasts e Webcasts">
+        
+        {/* Section Header: Minimalist Microphone Icon + Title - Standardized */}
         <div className="flex items-center space-x-2.5 mb-3">
-          <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center">
+          <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0">
             <Mic size={14} />
           </div>
-          <h2 className="text-xl font-bold tracking-tight text-neutral-950 font-poppins">
+          <h2 className="text-[23px] sm:text-[25px] font-bold tracking-tight text-neutral-950 font-poppins leading-tight">
             Podcasts / Webcasts
           </h2>
         </div>
 
-        {/* Podcast Card */}
-        <div className="bg-neutral-50 border border-neutral-200 p-4 rounded-xs">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 mb-4">
-            {/* Album Cover Graphic */}
-            <div className="w-20 h-20 shrink-0 bg-black rounded-xs overflow-hidden relative flex items-center justify-center shadow-xs">
-              {/* Rainbow vortex illustration */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-400 via-pink-500 to-indigo-900 opacity-90"></div>
-              <div className="relative z-10 text-center p-1">
-                <span className="text-[10px] font-black tracking-tight text-white uppercase block leading-tight font-poppins">
-                  BRAND NEW WORLD
-                </span>
-                <span className="text-[7px] text-white/80 font-bold block mt-0.5">
-                  FAST COMPANY
-                </span>
-              </div>
-            </div>
+        {/* Minimalist White Card (Matching Reference Layout Exactly) */}
+        <div className="bg-white border border-neutral-200 p-5 sm:p-6 rounded-none shadow-2xs">
+          
+          {/* Episode Title (With hover transition to Assuntos do Dia orange #eb5724) */}
+          <a 
+            href={spotifyEpisodeUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group block mb-2.5"
+          >
+            <h3 className="text-[17px] sm:text-[18px] font-bold text-neutral-950 font-poppins leading-snug group-hover:text-[#eb5724] transition-colors">
+              Por que só o Ensino Superior não resolve? | Danilo Costa no Na Ponta do Lápis
+            </h3>
+          </a>
 
-            {/* Title & Description */}
-            <div className="flex-1">
-              <h3 className="text-[15px] font-bold text-neutral-950 font-poppins leading-snug">
-                Brand New World
-              </h3>
-              <p className="text-[12px] text-neutral-600 leading-relaxed font-poppins mt-0.5">
-                Um podcast sobre este momento transformador do marketing e da publicidade à medida que o futuro se desenha.
-              </p>
-            </div>
-          </div>
+          {/* Episode Description */}
+          <p className="text-[13px] sm:text-[13.5px] text-neutral-600 leading-relaxed font-poppins mb-4">
+            Na Ponta do Lápis, webcast da FastCo Money, com o apoio do Santander, traz no 2º episódio Danilo Costa, fundador do Educbank e cofundador da Astra e da Clad Payments. No bate-papo com Rita Lisauskas, ele fala das alternativas ao Ensino Superior, o papel dos cursos profissionalizantes e tendências no mercado de trabalho.
+          </p>
 
-          {/* Interactive HTML5-like Audio Player */}
-          <div className="bg-neutral-200/70 p-2.5 rounded-xs flex items-center space-x-3">
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-neutral-800 transition-colors cursor-pointer shrink-0"
-              aria-label={isPlaying ? 'Pause' : 'Play'}
-            >
-              {isPlaying ? <Pause size={14} className="fill-white" /> : <Play size={14} className="fill-white ml-0.5" />}
-            </button>
-
-            <span className="text-[11px] font-mono text-neutral-700 w-18 shrink-0">
-              {formatTime(progress)} / {formatTime(totalSeconds)}
-            </span>
-
-            <input
-              type="range"
-              min={0}
-              max={totalSeconds}
-              value={progress}
-              onChange={handleSliderChange}
-              className="w-full accent-black h-1 bg-neutral-300 rounded-lg cursor-pointer"
+          {/* Embedded Spotify Player with Show Playlist Navigation */}
+          <div className="w-full rounded-2xl overflow-hidden bg-[#121212] mb-5 shadow-xs">
+            <iframe
+              style={{ borderRadius: '16px' }}
+              src="https://open.spotify.com/embed/show/1ZP4SWljsAkgyZtGuEGUCh?utm_source=generator&theme=0"
+              width="100%"
+              height="152"
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="Spotify Webcast Na Ponta do Lápis - FastCo Money"
             />
-
-            <button className="text-neutral-600 hover:text-black transition-colors cursor-pointer" aria-label="Volume">
-              <Volume2 size={16} />
-            </button>
-
-            <button className="text-neutral-600 hover:text-black transition-colors cursor-pointer" aria-label="More">
-              <MoreVertical size={16} />
-            </button>
           </div>
 
-          {/* Action Button */}
-          <div className="mt-4">
-            <button 
-              onClick={() => alert("Episódios completos de Brand New World disponíveis no Spotify e Apple Podcasts.")}
-              className="border border-black text-black px-5 py-1.5 text-[11px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-all cursor-pointer font-poppins"
-            >
-              VER TODOS OS PODCASTS
-            </button>
+          {/* Bottom Divider Line */}
+          <div className="border-t border-neutral-200/80 pt-4">
+            {/* Action Buttons: Side-by-side exact layout */}
+            <div className="flex items-center gap-3">
+              {/* Green Spotify Button */}
+              <a
+                href={spotifyShowUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 bg-[#1DB954] hover:bg-[#1ed760] text-black h-11 px-3 flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer font-poppins shadow-2xs"
+              >
+                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                </svg>
+                <span className="truncate">OUVIR NO SPOTIFY</span>
+              </a>
+
+              {/* White Button with black outline */}
+              <a
+                href={spotifyShowUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 bg-white hover:bg-neutral-50 border border-neutral-900 text-neutral-950 h-11 px-3 flex items-center justify-center text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer font-poppins text-center"
+              >
+                <span className="truncate">VER MAIS EPISÓDIOS</span>
+              </a>
+            </div>
           </div>
+
         </div>
-      </div>
+      </section>
 
       {/* Callebaut Brasil Chocolate Ad */}
       <div className="w-full bg-[#3d2314] text-white p-4 border border-[#2b180d] shadow-xs relative overflow-hidden">

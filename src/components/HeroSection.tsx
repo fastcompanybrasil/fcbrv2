@@ -39,7 +39,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                   <span className="block text-[11px] font-bold uppercase tracking-wider text-[#595959] mb-1.5 font-poppins">
                     {story.tag}
                   </span>
-                  <h2 className="text-[16px] xl:text-[17px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors mb-1.5 font-poppins">
+                  <h2 className="text-[16px] xl:text-[17px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1.5 font-poppins">
                     {story.title}
                   </h2>
                   <p className="text-[13px] text-neutral-600 leading-relaxed font-poppins font-normal">
@@ -67,7 +67,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                   />
                 </div>
 
-                <h1 className="text-[26px] xl:text-[29px] font-bold leading-tight text-neutral-950 group-hover:text-[#d63031] transition-colors mb-2 font-poppins tracking-tight">
+                <h1 className="text-[26px] xl:text-[29px] font-bold leading-tight text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-poppins tracking-tight">
                   {HERO_FEATURE.title}
                 </h1>
 
@@ -135,7 +135,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                         <div className="flex items-start justify-between gap-2.5">
                           {/* Narrower title box to wrap naturally across lines without any truncation */}
                           <div className="flex-1 min-w-0 pr-1">
-                            <h3 className="text-[12.5px] font-bold leading-[1.3] text-neutral-950 group-hover:text-[#d63031] transition-colors font-poppins">
+                            <h3 className="text-[12.5px] font-bold leading-[1.3] text-neutral-950 group-hover:text-[#eb5724] transition-colors font-poppins">
                               {story.title}
                             </h3>
                           </div>
@@ -177,7 +177,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors mb-2 font-poppins">
+                <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-poppins">
                   {card.title}
                 </h3>
                 <p className="text-[12px] text-neutral-600 leading-relaxed font-poppins line-clamp-3 font-normal">
@@ -225,7 +225,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
               />
             </div>
 
-            <h1 className="text-[24px] font-bold leading-tight text-neutral-950 group-hover:text-[#d63031] transition-colors mb-2 font-poppins">
+            <h1 className="text-[24px] font-bold leading-tight text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-poppins">
               {HERO_FEATURE.title}
             </h1>
 
@@ -252,7 +252,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                 <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                   {HERO_HORIZONTAL_CARDS[1].tag}
                 </span>
-                <h3 className="text-[13px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors font-poppins line-clamp-2">
+                <h3 className="text-[13px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors font-poppins line-clamp-2">
                   {HERO_HORIZONTAL_CARDS[1].title}
                 </h3>
                 <p className="text-[11px] text-neutral-500 leading-normal line-clamp-2 mt-0.5">
@@ -277,7 +277,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                 <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                   {HERO_HORIZONTAL_CARDS[2].tag}
                 </span>
-                <h3 className="text-[13px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors font-poppins line-clamp-2">
+                <h3 className="text-[13px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors font-poppins line-clamp-2">
                   {HERO_HORIZONTAL_CARDS[2].title}
                 </h3>
                 <p className="text-[11px] text-neutral-500 leading-normal line-clamp-2 mt-0.5">
@@ -302,7 +302,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                 <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                   {HERO_HORIZONTAL_CARDS[0].tag}
                 </span>
-                <h3 className="text-[13px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors font-poppins line-clamp-2">
+                <h3 className="text-[13px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors font-poppins line-clamp-2">
                   {HERO_HORIZONTAL_CARDS[0].title}
                 </h3>
                 <p className="text-[11px] text-neutral-500 leading-normal line-clamp-2 mt-0.5">
@@ -362,7 +362,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
 
                     <div className="flex items-start justify-between gap-2.5">
                       <div className="flex-1 min-w-0 pr-1">
-                        <h3 className="text-[12.5px] font-bold leading-[1.3] text-neutral-900 group-hover:text-[#d63031] transition-colors font-poppins">
+                        <h3 className="text-[12.5px] font-bold leading-[1.3] text-neutral-900 group-hover:text-[#eb5724] transition-colors font-poppins">
                           {story.title}
                         </h3>
                       </div>
@@ -391,7 +391,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
               <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                 {HERO_LEFT_STORIES[0].tag}
               </span>
-              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors mb-1 font-poppins">
+              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-poppins">
                 {HERO_LEFT_STORIES[0].title}
               </h3>
               <p className="text-[12px] text-neutral-600 leading-relaxed font-poppins">
@@ -407,7 +407,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
               <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                 {HERO_MOBILE_EXTRA.tag}
               </span>
-              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors mb-1 font-poppins">
+              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-poppins">
                 {HERO_MOBILE_EXTRA.title}
               </h3>
               <p className="text-[12px] text-neutral-600 leading-relaxed font-poppins">
@@ -423,7 +423,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
               <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                 {HERO_LEFT_STORIES[2].tag}
               </span>
-              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors mb-1 font-poppins">
+              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-poppins">
                 {HERO_LEFT_STORIES[2].title}
               </h3>
               <p className="text-[12px] text-neutral-600 leading-relaxed font-poppins">

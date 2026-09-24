@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 // Official Fast Company Brasil Vector Logo
-const FastCompanyLogo = ({ className = "h-[38px] sm:h-[48px] lg:h-[58px] xl:h-[62px] w-auto" }: { className?: string }) => (
+const FastCompanyLogo = ({ className = "h-[36px] sm:h-[46px] lg:h-[55px] xl:h-[59px] w-auto" }: { className?: string }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 424.24 137.37" 
@@ -90,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="w-full bg-[#181818] text-white border-b border-[#292929]">
         
         {/* Top Row: [☰ 🔍] ------------- [LOGO] ------------- [NEWSLETTER] */}
-        <div className="w-full px-4 sm:px-6 lg:px-[30px] h-[58px] sm:h-[68px] lg:h-[76px] flex items-center justify-between relative">
+        <div className="w-full px-4 sm:px-6 lg:px-[30px] h-[53px] sm:h-[63px] lg:h-[71px] flex items-center justify-between relative">
           
           {/* Left: Burger Menu Icon and Search Icon */}
           <div className="flex items-center space-x-4 sm:space-x-5 shrink-0 z-10">
@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center justify-center hover:opacity-90 transition-opacity"
               title="Fast Company Brasil"
             >
-              <FastCompanyLogo className="h-[36px] sm:h-[46px] lg:h-[56px] xl:h-[60px] w-auto" />
+              <FastCompanyLogo className="h-[34px] sm:h-[44px] lg:h-[53px] xl:h-[57px] w-auto" />
             </a>
           </div>
 
@@ -444,7 +444,7 @@ export const Header: React.FC<HeaderProps> = ({
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>
-                        <h3 className="text-[14px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors">
+                        <h3 className="text-[14px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors">
                           {workLifeStories[0].title}
                         </h3>
                       </article>
@@ -461,7 +461,7 @@ export const Header: React.FC<HeaderProps> = ({
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>
-                        <h3 className="text-[14px] font-bold leading-snug text-neutral-950 group-hover:text-[#d63031] transition-colors">
+                        <h3 className="text-[14px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors">
                           {workLifeStories[1].title}
                         </h3>
                       </article>

@@ -18,10 +18,12 @@ export const LatestStoriesFeed: React.FC<LatestStoriesFeedProps> = ({ onSelectSt
 
   return (
     <div className="w-full">
-      {/* Section Header */}
+      {/* Section Header - Standardized */}
       <div className="flex items-center space-x-2.5 pb-3 mb-6 border-b border-neutral-200">
-        <Newspaper size={21} className="text-black stroke-[2.2]" />
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-950 font-poppins">
+        <div className="w-6 h-6 flex items-center justify-center shrink-0 text-black">
+          <Newspaper size={20} className="text-black stroke-[2.2]" />
+        </div>
+        <h2 className="text-[23px] sm:text-[25px] font-bold tracking-tight text-neutral-950 font-poppins leading-tight">
           Últimas Notícias
         </h2>
       </div>
@@ -40,7 +42,7 @@ export const LatestStoriesFeed: React.FC<LatestStoriesFeedProps> = ({ onSelectSt
                 {story.tag}
               </span>
 
-              <h3 className="text-[18px] sm:text-[20px] font-bold leading-[1.28] text-neutral-950 group-hover:text-neutral-700 transition-colors mb-2 font-poppins">
+              <h3 className="text-[18px] sm:text-[20px] font-bold leading-[1.28] text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-poppins">
                 {story.title}
               </h3>
 

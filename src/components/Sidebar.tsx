@@ -107,9 +107,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ onSelectList }) => {
 
       {/* 3. Lists Widget */}
       <div className="w-full bg-white border border-neutral-200 p-5 rounded-xs">
-        <div className="flex items-center space-x-2 pb-3 mb-4 border-b border-neutral-200">
-          <List size={18} className="text-black stroke-[2.5]" />
-          <h3 className="text-lg font-bold tracking-tight text-neutral-950 font-poppins">
+        <div className="flex items-center space-x-2.5 pb-3 mb-4 border-b border-neutral-200">
+          <div className="w-6 h-6 flex items-center justify-center shrink-0 text-black">
+            <List size={20} className="text-black stroke-[2.5]" />
+          </div>
+          <h3 className="text-[23px] sm:text-[25px] font-bold tracking-tight text-neutral-950 font-poppins leading-tight">
             Listas
           </h3>
         </div>
@@ -123,7 +125,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onSelectList }) => {
             >
               {renderListIcon(item.icon, item.color)}
               <div className="flex-1">
-                <h4 className="text-[14px] font-bold text-neutral-900 group-hover:text-[#d63031] transition-colors font-poppins leading-snug">
+                <h4 className="text-[14px] font-bold text-neutral-900 group-hover:text-[#eb5724] transition-colors font-poppins leading-snug">
                   {item.title}
                 </h4>
                 <p className="text-[11px] text-neutral-500 leading-normal font-poppins mt-0.5">

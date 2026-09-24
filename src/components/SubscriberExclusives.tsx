@@ -123,9 +123,9 @@ export const SubscriberExclusives: React.FC<SubscriberExclusivesProps> = ({
     <section className="w-full bg-[#161616] text-white py-12 lg:py-16 select-none font-poppins border-t border-b border-neutral-800/80">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Title with Icon - Standardized with Stories For You */}
+        {/* Section Title with Icon - Standardized */}
         <div className="flex items-center space-x-2.5 mb-2">
-          <div className="w-7 h-7 rounded-full bg-[#242424] border border-neutral-600/80 flex items-center justify-center text-white shrink-0 shadow-xs">
+          <div className="w-6 h-6 rounded-full bg-[#242424] border border-neutral-700 flex items-center justify-center text-white shrink-0 shadow-xs">
             <svg 
               className="w-3.5 h-3.5 text-white" 
               viewBox="0 0 24 24" 
@@ -140,7 +140,7 @@ export const SubscriberExclusives: React.FC<SubscriberExclusivesProps> = ({
               <line x1="8" y1="13" x2="12" y2="13" />
             </svg>
           </div>
-          <h2 className="text-xl lg:text-2xl font-bold tracking-tight text-white leading-tight font-poppins">
+          <h2 className="text-[23px] sm:text-[25px] font-bold tracking-tight text-white font-poppins leading-tight">
             Colunistas Fast
           </h2>
         </div>
@@ -241,7 +241,7 @@ export const SubscriberExclusives: React.FC<SubscriberExclusivesProps> = ({
                   </span>
 
                   {/* Article Title in Crisp Bold White Poppins */}
-                  <h3 className="text-[15px] sm:text-[16px] font-bold leading-[1.3] text-white group-hover:text-neutral-300 transition-colors font-poppins">
+                  <h3 className="text-[15px] sm:text-[16px] font-bold leading-[1.3] text-white group-hover:text-[#eb5724] transition-colors font-poppins">
                     {story.title}
                   </h3>
                 </article>
