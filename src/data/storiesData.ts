@@ -14,17 +14,13 @@ export const LATEST_TOPICS = [
   "GEMINI",
   "IPHONE 17",
   "INTELIGÊNCIA ARTIFICIAL",
-  "STARTUPS & TECH",
-  "LIDERANÇA",
-  "ESG & CLIMA",
-  "FUTURO DO TRABALHO",
-  "INOVAÇÃO"
+  "STARTUPS & TECH"
 ];
 
 export const HERO_FEATURE: Story = {
   id: "hero-selena-rare-beauty",
   tag: "CREATORS & TECH",
-  title: "Selena Gomez fez da escuta a estratégia da Rare Beauty.",
+  title: "Selena Gomez fez da escuta a estratégia da Rare Beauty",
   snippet: "Da prevenção ao suicídio ao desenho das embalagens, a experiência pessoal da artista ajuda a explicar como a marca transforma saúde mental em decisões de negócio.",
   imageType: "rare-beauty-hero"
 };
