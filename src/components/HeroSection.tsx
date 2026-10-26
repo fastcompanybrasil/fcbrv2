@@ -39,7 +39,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                   <span className="block text-[11px] font-bold uppercase tracking-wider text-[#595959] mb-1.5 font-poppins">
                     {story.tag}
                   </span>
-                  <h2 className="text-[16px] xl:text-[17px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1.5 font-poppins">
+                  <h2 className="text-[16px] xl:text-[17px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1.5 font-merriweather">
                     {story.title}
                   </h2>
                   <p className="text-[13px] text-neutral-600 leading-relaxed font-poppins font-normal">
@@ -67,7 +67,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
                   />
                 </div>
 
-                <h1 className="text-[26px] xl:text-[29px] font-bold leading-tight text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-poppins tracking-tight">
+                <h1 className="text-[26px] xl:text-[29px] font-bold leading-tight text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-merriweather">
                   {HERO_FEATURE.title}
                 </h1>
 
@@ -225,7 +225,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
               />
             </div>
 
-            <h1 className="text-[24px] font-bold leading-tight text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-poppins">
+            <h1 className="text-[24px] font-bold leading-tight text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-merriweather">
               {HERO_FEATURE.title}
             </h1>
 
@@ -391,7 +391,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
               <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                 {HERO_LEFT_STORIES[0].tag}
               </span>
-              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-poppins">
+              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-merriweather">
                 {HERO_LEFT_STORIES[0].title}
               </h3>
               <p className="text-[12px] text-neutral-600 leading-relaxed font-poppins">
@@ -407,7 +407,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
               <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                 {HERO_MOBILE_EXTRA.tag}
               </span>
-              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-poppins">
+              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-merriweather">
                 {HERO_MOBILE_EXTRA.title}
               </h3>
               <p className="text-[12px] text-neutral-600 leading-relaxed font-poppins">
@@ -423,7 +423,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectStory }) => {
               <span className="block text-[10px] font-bold uppercase tracking-wider text-[#595959] mb-1 font-poppins">
                 {HERO_LEFT_STORIES[2].tag}
               </span>
-              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-poppins">
+              <h3 className="text-[15px] font-bold leading-snug text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-1 font-merriweather">
                 {HERO_LEFT_STORIES[2].title}
               </h3>
               <p className="text-[12px] text-neutral-600 leading-relaxed font-poppins">

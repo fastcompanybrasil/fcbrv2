@@ -42,7 +42,7 @@ export const LatestStoriesFeed: React.FC<LatestStoriesFeedProps> = ({ onSelectSt
                 {story.tag}
               </span>
 
-              <h3 className="text-[18px] sm:text-[20px] font-bold leading-[1.28] text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-poppins">
+              <h3 className="text-[18px] sm:text-[20px] font-bold leading-[1.28] text-neutral-950 group-hover:text-[#eb5724] transition-colors mb-2 font-merriweather">
                 {story.title}
               </h3>
 

@@ -15,6 +15,10 @@
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+.font-merriweather {
+  font-family: 'Merriweather', Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
 /* Fast Company logo styling */
 .fastco-logo-at {
   display: inline-flex;
