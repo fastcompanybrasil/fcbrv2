@@ -7,6 +7,7 @@ interface HeaderProps {
   onOpenNewsletter: () => void;
   onSelectCategory?: (category: string) => void;
   onSelectStory?: (story: Story) => void;
+  onGoHome?: () => void;
 }
 
 // Official Fast Company Brasil Vector Logo
@@ -31,7 +32,8 @@ const FastCompanyLogo = ({ className = "h-[36px] sm:h-[46px] lg:h-[55px] xl:h-[5
 export const Header: React.FC<HeaderProps> = ({ 
   onOpenNewsletter, 
   onSelectCategory,
-  onSelectStory 
+  onSelectStory,
+  onGoHome 
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -117,7 +119,11 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-auto">
             <a 
               href="#" 
-              className="flex items-center justify-center hover:opacity-90 transition-opacity"
+              onClick={(e) => {
+                e.preventDefault();
+                onGoHome?.();
+              }}
+              className="flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer"
               title="Fast Company Brasil"
             >
               <FastCompanyLogo className="h-[34px] sm:h-[44px] lg:h-[53px] xl:h-[57px] w-auto" />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { LatestTopics } from './components/LatestTopics';
 import { HeroSection } from './components/HeroSection';
@@ -11,16 +11,44 @@ import { Sidebar } from './components/Sidebar';
 import { Footer } from './components/Footer';
 import { StoryModal } from './components/StoryModal';
 import { NewsletterModal } from './components/NewsletterModal';
-import { Story } from './data/storiesData';
+import { ArticlePage } from './components/ArticlePage';
+import { Story, HERO_FEATURE } from './data/storiesData';
 import { Monitor, Smartphone } from 'lucide-react';
 
 export default function App() {
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
+  const [activeArticle, setActiveArticle] = useState<Story | null>(null);
   const [newsletterOpen, setNewsletterOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'responsive' | 'desktop' | 'mobile'>('responsive');
 
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash.includes('selena-gomez') || hash.includes('rare-beauty')) {
+        setActiveArticle(HERO_FEATURE);
+      }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const handleSelectStory = (story: Story) => {
-    setSelectedStory(story);
+    if (story.id === 'hero-selena-rare-beauty' || story.title.toLowerCase().includes('selena gomez')) {
+      setActiveArticle(story);
+      window.location.hash = 'selena-gomez-escuta-estrategia-rare-beauty';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setSelectedStory(story);
+    }
+  };
+
+  const handleBackHome = () => {
+    setActiveArticle(null);
+    if (window.location.hash) {
+      window.history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -83,60 +111,72 @@ export default function App() {
             alert(`Navegando para categoria: ${category}`);
           }}
           onSelectStory={handleSelectStory}
+          onGoHome={handleBackHome}
         />
 
-        {/* 2. Latest Topics Section (Separated from Header, Pills Layout - Image 2) */}
-        <LatestTopics 
-          isMobile={viewMode === 'mobile'}
-          onSelectTopic={(topic) => {
-            alert(`Filtrando tópicos recentes: ${topic}`);
-          }}
-        />
+        {activeArticle ? (
+          <ArticlePage
+            story={activeArticle}
+            onBack={handleBackHome}
+            onSelectStory={handleSelectStory}
+            onOpenNewsletter={() => setNewsletterOpen(true)}
+          />
+        ) : (
+          <>
+            {/* 2. Latest Topics Section (Separated from Header, Pills Layout - Image 2) */}
+            <LatestTopics 
+              isMobile={viewMode === 'mobile'}
+              onSelectTopic={(topic) => {
+                alert(`Filtrando tópicos recentes: ${topic}`);
+              }}
+            />
 
-        {/* 3. Hero Section (Desktop 3-column + 4-box; Mobile stacked) */}
-        <HeroSection onSelectStory={handleSelectStory} />
+            {/* 3. Hero Section (Desktop 3-column + 4-box; Mobile stacked) */}
+            <HeroSection onSelectStory={handleSelectStory} />
 
-        {/* 3. Subscriber Exclusives (Dark section) */}
-        <SubscriberExclusives 
-          onSelectStory={handleSelectStory}
-          onSubscribe={() => setNewsletterOpen(true)}
-        />
+            {/* 3. Subscriber Exclusives (Dark section) */}
+            <SubscriberExclusives 
+              onSelectStory={handleSelectStory}
+              onSubscribe={() => setNewsletterOpen(true)}
+            />
 
-        {/* 4. Mobile App Download Promo & Print Video Card (Shown on mobile or in mobile view) */}
-        <div className={viewMode === 'mobile' ? 'block px-4' : 'block lg:hidden px-4'}>
-          <MobileAppPromo />
-        </div>
-
-        {/* 5. Editorias em Destaque Section */}
-        <StoriesForYou onSelectStory={handleSelectStory} />
-
-        {/* 6. Main Feed & Sidebar Section */}
-        <main className="w-full bg-white py-8">
-          <div className="max-w-[1400px] mx-auto px-4 lg:px-6">
-            
-            {/* Desktop 2-Column Grid (8 cols main feed, 4 cols sidebar) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              
-              {/* Left 8-Column: Latest Stories Feed */}
-              <div className="lg:col-span-8">
-                <LatestStoriesFeed onSelectStory={handleSelectStory} />
-              </div>
-
-              {/* Right 4-Column: Sidebar Widgets */}
-              <div className="lg:col-span-4 space-y-8">
-                {/* Latest Podcast (Placed at top of sidebar in desktop) */}
-                <LatestPodcast />
-
-                {/* Sidebar Ads, Lists Box & Banners */}
-                <Sidebar onSelectList={(listId) => {
-                  alert(`Acessando detalhes da lista: ${listId}`);
-                }} />
-              </div>
-
+            {/* 4. Mobile App Download Promo & Print Video Card (Shown on mobile or in mobile view) */}
+            <div className={viewMode === 'mobile' ? 'block px-4' : 'block lg:hidden px-4'}>
+              <MobileAppPromo />
             </div>
 
-          </div>
-        </main>
+            {/* 5. Editorias em Destaque Section */}
+            <StoriesForYou onSelectStory={handleSelectStory} />
+
+            {/* 6. Main Feed & Sidebar Section */}
+            <main className="w-full bg-white py-8">
+              <div className="max-w-[1400px] mx-auto px-4 lg:px-6">
+                
+                {/* Desktop 2-Column Grid (8 cols main feed, 4 cols sidebar) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  
+                  {/* Left 8-Column: Latest Stories Feed */}
+                  <div className="lg:col-span-8">
+                    <LatestStoriesFeed onSelectStory={handleSelectStory} />
+                  </div>
+
+                  {/* Right 4-Column: Sidebar Widgets */}
+                  <div className="lg:col-span-4 space-y-8">
+                    {/* Latest Podcast (Placed at top of sidebar in desktop) */}
+                    <LatestPodcast />
+
+                    {/* Sidebar Ads, Lists Box & Banners */}
+                    <Sidebar onSelectList={(listId) => {
+                      alert(`Acessando detalhes da lista: ${listId}`);
+                    }} />
+                  </div>
+
+                </div>
+
+              </div>
+            </main>
+          </>
+        )}
 
         {/* 7. Comprehensive Footer */}
         <Footer />
