@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Check, Copy } from 'lucide-react';
+import { Check, Copy } from 'lucide-react';
 import selenaRareBeautyImg from '../assets/selena-gomez-rare-beauty.jpg';
 import { Story, MOST_READ_STORIES } from '../data/storiesData';
+import { AuthorBio, RelatedStoriesSection } from './ArticleRelatedSection';
 
 interface ArticlePageProps {
   story: Story;
@@ -240,33 +241,8 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
 
                 </div>
 
-                {/* Tags section */}
-                <div className="mt-10 pt-6 border-t border-neutral-200">
-                  <span className="text-[12px] font-bold text-neutral-400 uppercase tracking-wider block mb-3 font-poppins">
-                    TÓPICOS RELACIONADOS
-                  </span>
-                  <div className="flex flex-wrap gap-2 text-xs font-semibold text-neutral-800 font-poppins">
-                    {['SELENA GOMEZ', 'RARE BEAUTY', 'CREATORS & TECH', 'SAÚDE MENTAL', 'INOVAÇÃO', 'EMPREENDEDORISMO'].map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1.5 bg-neutral-100 hover:bg-neutral-200 transition-colors border border-neutral-200 cursor-pointer"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Back to Home CTA button */}
-                <div className="mt-10 pt-6 border-t border-neutral-200 flex items-center justify-between">
-                  <button
-                    onClick={onBack}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white hover:bg-[#eb5724] transition-colors text-sm font-bold uppercase tracking-wider font-poppins cursor-pointer"
-                  >
-                    <ArrowLeft size={16} />
-                    <span>Voltar ao feed de notícias</span>
-                  </button>
-                </div>
+                {/* SOBRE A AUTORA (Matching image_0534720e.png) */}
+                <AuthorBio />
 
               </div>
 
@@ -374,6 +350,10 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
           </div>
 
         </div>
+
+        {/* ASSUNTOS RELACIONADOS (Matching image_0534720e.png) */}
+        <RelatedStoriesSection onSelectStory={onSelectStory} />
+
       </div>
 
     </div>
