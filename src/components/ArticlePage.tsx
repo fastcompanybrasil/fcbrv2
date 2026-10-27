@@ -40,23 +40,6 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
   return (
     <div className="w-full bg-white text-neutral-900 pb-16">
       
-      {/* Top Breadcrumb & Return Bar */}
-      <div className="border-b border-neutral-200 bg-neutral-50/70">
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs">
-          <button
-            onClick={onBack}
-            className="inline-flex items-center gap-1.5 text-neutral-700 hover:text-[#eb5724] font-semibold transition-colors cursor-pointer"
-          >
-            <ArrowLeft size={14} />
-            <span>Voltar para a página inicial</span>
-          </button>
-          <div className="hidden sm:flex items-center gap-2 text-neutral-400 text-[11px]">
-            <span>Fast Company Brasil</span>
-            <span>/</span>
-            <span className="text-neutral-700 font-semibold uppercase">{story.tag || 'CREATORS & TECH'}</span>
-          </div>
-        </div>
-      </div>
 
       {/* Main Article Container matching attached reference layout */}
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
@@ -98,83 +81,90 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
               Créditos: Unsplash, Rare Beauty
             </div>
 
-            {/* 5. Author Bar & Floating Social Bar Row */}
-            <div className="flex items-start gap-4 sm:gap-6 mb-8 pb-6 border-b border-neutral-200">
+            {/* 5. Article Content Row with Left Social Share Rail (Matching image_2f70abcc.png) */}
+            <div className="flex items-start gap-4 sm:gap-6 lg:gap-7">
               
-              {/* Vertical Stacked Circular Social Buttons (Exactly matching image) */}
-              <div className="flex flex-col gap-2.5 shrink-0 pt-0.5">
-                {/* Facebook */}
-                <button
-                  onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')}
-                  className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#eb5724] transition-colors cursor-pointer shadow-xs"
-                  title="Compartilhar no Facebook"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </button>
+              {/* Left Rail: Vertical Circular Share Buttons */}
+              <div className="w-8 sm:w-9 shrink-0 flex flex-col items-center sticky top-24 pt-0.5">
+                <div className="flex flex-col gap-2.5">
+                  {/* Facebook */}
+                  <button
+                    onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')}
+                    className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#eb5724] transition-colors cursor-pointer shadow-xs"
+                    title="Compartilhar no Facebook"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </button>
 
-                {/* LinkedIn */}
-                <button
-                  onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}
-                  className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#eb5724] transition-colors cursor-pointer shadow-xs"
-                  title="Compartilhar no LinkedIn"
-                >
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                </button>
+                  {/* LinkedIn */}
+                  <button
+                    onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}
+                    className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#eb5724] transition-colors cursor-pointer shadow-xs"
+                    title="Compartilhar no LinkedIn"
+                  >
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  </button>
 
-                {/* WhatsApp */}
-                <button
-                  onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(story.title + ' ' + window.location.href)}`, '_blank')}
-                  className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#eb5724] transition-colors cursor-pointer shadow-xs"
-                  title="Compartilhar no WhatsApp"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                  </svg>
-                </button>
+                  {/* WhatsApp */}
+                  <button
+                    onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(story.title + ' ' + window.location.href)}`, '_blank')}
+                    className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#eb5724] transition-colors cursor-pointer shadow-xs"
+                    title="Compartilhar no WhatsApp"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                  </button>
 
-                {/* Email */}
-                <button
-                  onClick={() => window.location.href = `mailto:?subject=${encodeURIComponent(story.title)}&body=${encodeURIComponent(window.location.href)}`}
-                  className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#eb5724] transition-colors cursor-pointer shadow-xs"
-                  title="Compartilhar por E-mail"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
-                  </svg>
-                </button>
+                  {/* Email */}
+                  <button
+                    onClick={() => window.location.href = `mailto:?subject=${encodeURIComponent(story.title)}&body=${encodeURIComponent(window.location.href)}`}
+                    className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#eb5724] transition-colors cursor-pointer shadow-xs"
+                    title="Compartilhar por E-mail"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                    </svg>
+                  </button>
 
-                {/* Copy Link */}
-                <button
-                  onClick={handleCopyLink}
-                  className="w-8 h-8 rounded-full bg-neutral-100 text-neutral-700 flex items-center justify-center hover:bg-neutral-200 transition-colors cursor-pointer border border-neutral-300"
-                  title="Copiar link"
-                >
-                  {copiedLink ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
-                </button>
+                  {/* Copy Link */}
+                  <button
+                    onClick={handleCopyLink}
+                    className="w-8 h-8 rounded-full bg-[#f8f9fa] text-neutral-700 flex items-center justify-center hover:bg-neutral-200 transition-colors cursor-pointer border border-neutral-300"
+                    title="Copiar link"
+                  >
+                    {copiedLink ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
+                  </button>
+                </div>
+
+                {/* Faint dividing line below copy link button */}
+                <div className="w-8 border-b border-neutral-200 mt-4" />
               </div>
 
-              {/* Byline + Reading Time + Google Banner */}
-              <div className="flex-1">
+              {/* Right Content Area: Byline, Google Pill, and Article Content */}
+              <div className="flex-1 min-w-0">
+                
+                {/* Byline + Reading Time */}
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="text-[#eb5724] font-bold text-[13px] uppercase tracking-wider font-poppins">
                     CAMILA DE LIRA
                   </span>
-                  <span className="text-neutral-500 font-medium text-[12px] uppercase tracking-wider font-poppins">
+                  <span className="text-neutral-500 font-semibold text-[12px] uppercase tracking-wider font-poppins">
                     8 MINUTOS DE LEITURA
                   </span>
                 </div>
 
                 {/* Google "Favorite nosso conteúdo no Google >" */}
-                <div className="mt-3.5">
+                <div className="mt-3.5 mb-6">
                   <a
                     href="https://news.google.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 px-4 py-2 bg-[#f8f9fa] hover:bg-[#eff1f3] text-neutral-800 text-[13px] font-medium rounded-full border border-neutral-200 transition-all shadow-2xs group"
+                    className="inline-flex items-center gap-2.5 px-3.5 py-1.5 sm:px-4 sm:py-2 bg-[#f8f9fa] hover:bg-[#eff1f3] text-neutral-800 text-[13px] font-medium rounded-full border border-neutral-200 transition-all shadow-2xs group"
                   >
                     <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
@@ -186,99 +176,100 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
                     <span className="text-neutral-400 group-hover:text-neutral-700 transition-colors">›</span>
                   </a>
                 </div>
-              </div>
 
-            </div>
+                {/* 6. Full Editorial Body Text */}
+                <div className="space-y-6 text-[17px] sm:text-[18px] text-neutral-850 leading-[1.8] font-merriweather">
+                  
+                  <p>
+                    No palco da 12ª edição do <strong>Fast Company Innovation Festival</strong>, Selena Gomez fala baixo e em tom tranquilo. Ela se emociona ao relatar a jornada por trás da criação da <strong>Rare Beauty</strong>, marca de cosméticos fundada em setembro de 2020 que se consolidou rapidamente como um dos maiores cases recentes da indústria global de beleza, ultrapassando US$ 300 milhões em faturamento anual.
+                  </p>
 
-            {/* 6. Full Editorial Body Text */}
-            <div className="space-y-6 text-[17px] sm:text-[18px] text-neutral-800 leading-[1.8] font-merriweather">
-              
-              <p>
-                No palco da 12ª edição do <strong>Fast Company Innovation Festival</strong>, Selena Gomez fala baixo e em tom tranquilo. Ela se emociona ao relatar a jornada por trás da criação da <strong>Rare Beauty</strong>, marca de cosméticos fundada em setembro de 2020 que se consolidou rapidamente como um dos maiores cases recentes da indústria global de beleza, ultrapassando US$ 300 milhões em faturamento anual.
-              </p>
+                  <p>
+                    A proposta que parecia contraintuitiva para a indústria tradicional — que historicamente construiu suas fortunas alimentando inseguranças e prometendo padrões estéticos inalcançáveis — foi justamente fazer o oposto: transformar a vulnerabilidade, a conversa franca sobre saúde mental e a aceitação pessoal no próprio núcleo estratégico do negócio.
+                  </p>
 
-              <p>
-                A proposta que parecia contraintuitiva para a indústria tradicional — que historicamente construiu suas fortunas alimentando inseguranças e prometendo padrões estéticos inalcançáveis — foi justamente fazer o oposto: transformar a vulnerabilidade, a conversa franca sobre saúde mental e a aceitação pessoal no próprio núcleo estratégico do negócio.
-              </p>
+                  {/* In-article Pull Quote */}
+                  <div className="my-8 py-5 px-6 border-l-4 border-[#eb5724] bg-neutral-50/80">
+                    <blockquote className="text-[20px] sm:text-[22px] font-bold text-neutral-950 leading-snug italic font-merriweather">
+                      "Não criei a Rare Beauty para ser apenas mais uma marca de maquiagem de celebridade. Eu queria que as pessoas sentissem que pertencem a um espaço onde não precisam ser perfeitas para serem valorizadas."
+                    </blockquote>
+                    <cite className="block mt-3 text-xs uppercase tracking-wider font-bold text-neutral-600 font-poppins not-italic">
+                      — Selena Gomez, fundadora e presidente do conselho da Rare Beauty
+                    </cite>
+                  </div>
 
-              {/* In-article Pull Quote */}
-              <div className="my-8 py-5 px-6 border-l-4 border-[#eb5724] bg-neutral-50/80">
-                <blockquote className="text-[20px] sm:text-[22px] font-bold text-neutral-950 leading-snug italic font-merriweather">
-                  "Não criei a Rare Beauty para ser apenas mais uma marca de maquiagem de celebridade. Eu queria que as pessoas sentissem que pertencem a um espaço onde não precisam ser perfeitas para serem valorizadas."
-                </blockquote>
-                <cite className="block mt-3 text-xs uppercase tracking-wider font-bold text-neutral-600 font-poppins not-italic">
-                  — Selena Gomez, fundadora e presidente do conselho da Rare Beauty
-                </cite>
-              </div>
+                  <h2 className="text-[24px] sm:text-[28px] font-bold text-neutral-950 font-merriweather pt-4">
+                    A escuta ativa como vantagem competitiva
+                  </h2>
 
-              <h2 className="text-[24px] sm:text-[28px] font-bold text-neutral-950 font-merriweather pt-4">
-                A escuta ativa como vantagem competitiva
-              </h2>
+                  <p>
+                    Durante o painel <em>"Purpose That Performs: Inside the Rare Beauty Blueprint"</em>, ao lado de Elyse Cohen, vice-presidente de impacto social da marca, Selena destacou que a escuta atenta não é um adorno de relações públicas, mas sim o método operacional primário da companhia.
+                  </p>
 
-              <p>
-                Durante o painel <em>"Purpose That Performs: Inside the Rare Beauty Blueprint"</em>, ao lado de Elyse Cohen, vice-presidente de impacto social da marca, Selena destacou que a escuta atenta não é um adorno de relações públicas, mas sim o método operacional primário da companhia.
-              </p>
+                  <p>
+                    Desde os primeiros protótipos, a equipe reuniu comunidades de fãs, profissionais de saúde e consumidores com diferentes históricos clínicos para testar formulações e usabilidade. O diagnóstico de lúpus recebido por Selena em 2015, acompanhado posteriormente pela revelação pública de seu transtorno bipolar, moldou uma liderança orientada pela empatia radical e pela rejeição de falsas promessas de rejuvenescimento ou perfeição.
+                  </p>
 
-              <p>
-                Desde os primeiros protótipos, a equipe reuniu comunidades de fãs, profissionais de saúde e consumidores com diferentes históricos clínicos para testar formulações e usabilidade. O diagnóstico de lúpus recebido por Selena em 2015, acompanhado posteriormente pela revelação pública de seu transtorno bipolar, moldou uma liderança orientada pela empatia radical e pela rejeição de falsas promessas de rejuvenescimento ou perfeição.
-              </p>
+                  <h2 className="text-[24px] sm:text-[28px] font-bold text-neutral-950 font-merriweather pt-4">
+                    Design com propósito: das embalagens ao Rare Impact Fund
+                  </h2>
 
-              <h2 className="text-[24px] sm:text-[28px] font-bold text-neutral-950 font-merriweather pt-4">
-                Design com propósito: das embalagens ao Rare Impact Fund
-              </h2>
+                  <p>
+                    Essa escuta se manifesta nos menores detalhes de engenharia de produto. Quem tem limitações de mobilidade ou fraqueza nas mãos — sintoma frequente enfrentado pela própria artista decorrente das crises de lúpus e artrite — frequentemente relata dor ao tentar desrosquear frascos apertados ou segurar aplicadores finos.
+                  </p>
 
-              <p>
-                Essa escuta se manifesta nos menores detalhes de engenharia de produto. Quem tem limitações de mobilidade ou fraqueza nas mãos — sintoma frequente enfrentado pela própria artista decorrente das crises de lúpus e artrite — frequentemente relata dor ao tentar desrosquear frascos apertados ou segurar aplicadores finos.
-              </p>
+                  <p>
+                    A tampa esférica exclusiva dos blushes líquidos <em>Soft Pinch</em> e dos iluminadores foi desenvolvida para oferecer uma pega ergonômica e firme, permitindo que pessoas com artrite ou mobilidade reduzida consigam aplicar maquiagem com autonomia. O que começou como uma solução de acessibilidade virou também a assinatura visual mais reconhecível e compartilhada da marca nas redes sociais.
+                  </p>
 
-              <p>
-                A tampa esférica exclusiva dos blushes líquidos <em>Soft Pinch</em> e dos iluminadores foi desenvolvida para oferecer uma pega ergonômica e firme, permitindo que pessoas com artrite ou mobilidade reduzida consigam aplicar maquiagem com autonomia. O que começou como uma solução de acessibilidade virou também a assinatura visual mais reconhecível e compartilhada da marca nas redes sociais.
-              </p>
+                  <p>
+                    Paralelamente, a marca estabeleceu desde o primeiro dia o <strong>Rare Impact Fund</strong>, comprometendo-se a doar 1% de todas as vendas globais para expandir o acesso a serviços de saúde mental para jovens e comunidades marginalizadas. A meta audaciosa de arrecadar US$ 100 milhões ao longo de uma década já ultrapassou dezenas de milhões repassados a ONGs globais e programas em escolas públicas.
+                  </p>
 
-              <p>
-                Paralelamente, a marca estabeleceu desde o primeiro dia o <strong>Rare Impact Fund</strong>, comprometendo-se a doar 1% de todas as vendas globais para expandir o acesso a serviços de saúde mental para jovens e comunidades marginalizadas. A meta audaciosa de arrecadar US$ 100 milhões ao longo de uma década já ultrapassou dezenas de milhões repassados a ONGs globais e programas em escolas públicas.
-              </p>
+                  <h2 className="text-[24px] sm:text-[28px] font-bold text-neutral-950 font-merriweather pt-4">
+                    A revolução dos 'creators' nos negócios corporativos
+                  </h2>
 
-              <h2 className="text-[24px] sm:text-[28px] font-bold text-neutral-950 font-merriweather pt-4">
-                A revolução dos 'creators' nos negócios corporativos
-              </h2>
+                  <p>
+                    Para analistas de mercado, o sucesso sustentável da Rare Beauty desafia os conglomerados multinacionais porque não se apoia em uma mera associação de licenciamento. Selena Gomez participa diretamente do conselho, do desenvolvimento de produtos e da comunicação com os mais de 400 milhões de seguidores que acompanham sua rotina sem filtros.
+                  </p>
 
-              <p>
-                Para analistas de mercado, o sucesso sustentável da Rare Beauty desafia os conglomerados multinacionais porque não se apoia em uma mera associação de licenciamento. Selena Gomez participa diretamente do conselho, do desenvolvimento de produtos e da comunicação com os mais de 400 milhões de seguidores que acompanham sua rotina sem filtros.
-              </p>
+                  <p>
+                    "O público atual é extremamente perspicaz. As pessoas sabem identificar quando um projeto tem alma ou quando é apenas uma tentativa corporativa de monetizar a atenção", concluiu a fundadora no encerramento de sua apresentação no festival. "Nossa meta nunca foi vender ilusão; foi oferecer ferramentas para que cada pessoa celebre quem realmente é."
+                  </p>
 
-              <p>
-                "O público atual é extremamente perspicaz. As pessoas sabem identificar quando um projeto tem alma ou quando é apenas uma tentativa corporativa de monetizar a atenção", concluiu a fundadora no encerramento de sua apresentação no festival. "Nossa meta nunca foi vender ilusão; foi oferecer ferramentas para que cada pessoa celebre quem realmente é."
-              </p>
+                </div>
 
-            </div>
-
-            {/* Tags section */}
-            <div className="mt-10 pt-6 border-t border-neutral-200">
-              <span className="text-[12px] font-bold text-neutral-400 uppercase tracking-wider block mb-3 font-poppins">
-                TÓPICOS RELACIONADOS
-              </span>
-              <div className="flex flex-wrap gap-2 text-xs font-semibold text-neutral-800 font-poppins">
-                {['SELENA GOMEZ', 'RARE BEAUTY', 'CREATORS & TECH', 'SAÚDE MENTAL', 'INOVAÇÃO', 'EMPREENDEDORISMO'].map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1.5 bg-neutral-100 hover:bg-neutral-200 transition-colors border border-neutral-200 cursor-pointer"
-                  >
-                    {tag}
+                {/* Tags section */}
+                <div className="mt-10 pt-6 border-t border-neutral-200">
+                  <span className="text-[12px] font-bold text-neutral-400 uppercase tracking-wider block mb-3 font-poppins">
+                    TÓPICOS RELACIONADOS
                   </span>
-                ))}
-              </div>
-            </div>
+                  <div className="flex flex-wrap gap-2 text-xs font-semibold text-neutral-800 font-poppins">
+                    {['SELENA GOMEZ', 'RARE BEAUTY', 'CREATORS & TECH', 'SAÚDE MENTAL', 'INOVAÇÃO', 'EMPREENDEDORISMO'].map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1.5 bg-neutral-100 hover:bg-neutral-200 transition-colors border border-neutral-200 cursor-pointer"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-            {/* Back to Home CTA button */}
-            <div className="mt-10 pt-6 border-t border-neutral-200 flex items-center justify-between">
-              <button
-                onClick={onBack}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white hover:bg-[#eb5724] transition-colors text-sm font-bold uppercase tracking-wider font-poppins cursor-pointer"
-              >
-                <ArrowLeft size={16} />
-                <span>Voltar ao feed de notícias</span>
-              </button>
+                {/* Back to Home CTA button */}
+                <div className="mt-10 pt-6 border-t border-neutral-200 flex items-center justify-between">
+                  <button
+                    onClick={onBack}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white hover:bg-[#eb5724] transition-colors text-sm font-bold uppercase tracking-wider font-poppins cursor-pointer"
+                  >
+                    <ArrowLeft size={16} />
+                    <span>Voltar ao feed de notícias</span>
+                  </button>
+                </div>
+
+              </div>
+
             </div>
 
           </div>
