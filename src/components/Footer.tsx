@@ -2,11 +2,27 @@ import React, { useState } from 'react';
 import { ChevronDown, ShieldCheck } from 'lucide-react';
 import { FOOTER_NAV } from '../data/storiesData';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateCategory?: (category: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigateCategory }) => {
   const [openCol, setOpenCol] = useState<string | null>(null);
 
   const toggleCol = (category: string) => {
     setOpenCol(openCol === category ? null : category);
+  };
+
+  const handleCategoryClick = (category: string, item?: string) => {
+    if (category === 'WORKLIFE' || category === 'WORK LIFE') {
+      if (onNavigateCategory) {
+        onNavigateCategory('WORK LIFE');
+      } else {
+        window.location.hash = 'worklife';
+      }
+    } else if (item) {
+      window.location.hash = item.toLowerCase().replace(/\s+/g, '-');
+    }
   };
 
   const socialLinks = [
@@ -45,8 +61,13 @@ export const Footer: React.FC = () => {
             return (
               <div key={col.category} className="flex flex-col">
                 <button
-                  onClick={() => toggleCol(col.category)}
-                  className="flex items-center justify-between font-extrabold text-[12px] tracking-wider uppercase text-white pb-2 lg:cursor-default"
+                  onClick={() => {
+                    toggleCol(col.category);
+                    if (col.category === 'WORKLIFE') {
+                      handleCategoryClick('WORKLIFE');
+                    }
+                  }}
+                  className="flex items-center justify-between font-extrabold text-[12px] tracking-wider uppercase text-white pb-2 lg:cursor-pointer hover:text-[#eb5724] transition-colors"
                 >
                   <span>{col.category}</span>
                   <ChevronDown size={14} className="lg:hidden" />
@@ -55,12 +76,13 @@ export const Footer: React.FC = () => {
                 <ul className={`space-y-2 mt-1 ${isOpen ? 'block' : 'hidden lg:block'}`}>
                   {col.items.map((item) => (
                     <li key={item}>
-                      <a
-                        href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="text-[12px] text-neutral-400 hover:text-white transition-colors font-poppins font-normal block py-0.5"
+                      <button
+                        type="button"
+                        onClick={() => handleCategoryClick(col.category, item)}
+                        className="text-[12px] text-neutral-400 hover:text-white transition-colors font-poppins font-normal block py-0.5 text-left cursor-pointer"
                       >
                         {item}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>

@@ -12,30 +12,47 @@ import { Footer } from './components/Footer';
 import { StoryModal } from './components/StoryModal';
 import { NewsletterModal } from './components/NewsletterModal';
 import { ArticlePage } from './components/ArticlePage';
+import { WorkLifePage } from './components/WorkLifePage';
 import { Story, HERO_FEATURE } from './data/storiesData';
 import { Monitor, Smartphone } from 'lucide-react';
 
 export default function App() {
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
   const [activeArticle, setActiveArticle] = useState<Story | null>(null);
+  const [currentView, setCurrentView] = useState<'home' | 'article' | 'worklife'>('home');
   const [newsletterOpen, setNewsletterOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'responsive' | 'desktop' | 'mobile'>('responsive');
 
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash;
-      if (hash.includes('selena-gomez') || hash.includes('rare-beauty')) {
+    const handleRoute = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+
+      if (path === '/worklife' || path === '/worklife/' || hash === '#worklife' || hash === '#/worklife' || hash.includes('worklife')) {
+        setCurrentView('worklife');
+        setActiveArticle(null);
+      } else if (hash.includes('selena-gomez') || hash.includes('rare-beauty')) {
+        setCurrentView('article');
         setActiveArticle(HERO_FEATURE);
+      } else {
+        setCurrentView('home');
+        setActiveArticle(null);
       }
     };
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+
+    handleRoute();
+    window.addEventListener('popstate', handleRoute);
+    window.addEventListener('hashchange', handleRoute);
+    return () => {
+      window.removeEventListener('popstate', handleRoute);
+      window.removeEventListener('hashchange', handleRoute);
+    };
   }, []);
 
   const handleSelectStory = (story: Story) => {
     if (story.id === 'hero-selena-rare-beauty' || story.title.toLowerCase().includes('selena gomez')) {
       setActiveArticle(story);
+      setCurrentView('article');
       window.location.hash = 'selena-gomez-escuta-estrategia-rare-beauty';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -43,10 +60,24 @@ export default function App() {
     }
   };
 
-  const handleBackHome = () => {
+  const handleNavigateWorkLife = () => {
+    setCurrentView('worklife');
     setActiveArticle(null);
-    if (window.location.hash) {
-      window.history.pushState("", document.title, window.location.pathname + window.location.search);
+    try {
+      window.history.pushState(null, '', '/worklife');
+    } catch {
+      window.location.hash = 'worklife';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackHome = () => {
+    setCurrentView('home');
+    setActiveArticle(null);
+    try {
+      window.history.pushState(null, '', '/');
+    } catch {
+      window.location.hash = '';
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -108,18 +139,27 @@ export default function App() {
         <Header 
           onOpenNewsletter={() => setNewsletterOpen(true)}
           onSelectCategory={(category) => {
-            alert(`Navegando para categoria: ${category}`);
+            if (category === 'WORK LIFE' || category.toLowerCase().includes('work')) {
+              handleNavigateWorkLife();
+            } else {
+              alert(`Navegando para categoria: ${category}`);
+            }
           }}
           onSelectStory={handleSelectStory}
           onGoHome={handleBackHome}
         />
 
-        {activeArticle ? (
+        {currentView === 'article' && activeArticle ? (
           <ArticlePage
             story={activeArticle}
             onBack={handleBackHome}
             onSelectStory={handleSelectStory}
             onOpenNewsletter={() => setNewsletterOpen(true)}
+          />
+        ) : currentView === 'worklife' ? (
+          <WorkLifePage 
+            onSelectStory={handleSelectStory}
+            onGoHome={handleBackHome}
           />
         ) : (
           <>
@@ -179,7 +219,11 @@ export default function App() {
         )}
 
         {/* 7. Comprehensive Footer */}
-        <Footer />
+        <Footer onNavigateCategory={(cat) => {
+          if (cat === 'WORK LIFE') {
+            handleNavigateWorkLife();
+          }
+        }} />
 
       </div>
 
